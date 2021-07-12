@@ -67,3 +67,23 @@ For help on any individual command run `vagrant COMMAND -h`
 - step 5: vagrant ssh
 - step 6: repeat all the update and upgrade commands followed by installing nginx and checking of nginx
 - `ningx status active` should load nginx in the browswer with `192.168.10.100` as well as `http://development.local/`
+
+**Reload/Destroy vagrant**
+- 1) `vagrant reload` (if this does not work, you will have to `vagrant destroy` and then do `vagrant up` again)
+- 2) `vagrant ssh` Opens VM
+- 3) `systemctl status nginx` 
+- 4) Go to browser and write: http://192.168.10.100
+- ---------------------------------------------------- 
+- Lets automate the tast that we did manually earlier today
+- Create a file called `provision.sh`. Add the below code to the new file: 
+
+- `#!/bin/bash` (necessary for all bash scripts)
+- `sudo apt-get update -y`
+- `sude apt-get upgrade -y`
+- `sudo apt-get install nginx -y`
+- `systemctl status nginx`
+
+- To run provision.sh we need to give file permission and make this file exceutable
+- To change permission we use `chmod` with required permission then file name
+- `sudo chmod +x provision.sh`
+-To run `sudo ./provision.sh`
