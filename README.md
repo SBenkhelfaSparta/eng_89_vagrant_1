@@ -87,3 +87,25 @@ For help on any individual command run `vagrant COMMAND -h`
 - To change permission we use `chmod` with required permission then file name
 - `sudo chmod +x provision.sh`
 -To run `sudo ./provision.sh`
+- ---------------------------------------------------- 
+### Reverse proxy setup
+Head over to /etc/nginx/sites-available and put this code in the default file:
+```
+server {
+  listen 80;
+
+  server_name _;
+
+  location / {
+    proxy_pass http://192.168.10.100:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}
+```
+- Test the file with `sudo nginx -t`
+- Restart and check to make sure it is running a fresh instance with `sudo systemctl restart nginx` and `sudo systemctl status nginx`
+- Head over back to your app folder and run `npm start`
