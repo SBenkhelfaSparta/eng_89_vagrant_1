@@ -1,5 +1,6 @@
 # Setting up Development Env
 ## installation of Vagrant, Virtual box and Ruby
+![](dev_env.png)
 ### vagrant commands
 - ` vagrant up` to launch the vm
 - `vagrant destroy` to delete everything 
