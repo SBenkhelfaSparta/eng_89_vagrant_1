@@ -110,3 +110,6 @@ server {
 - Test the file with `sudo nginx -t`
 - Restart and check to make sure it is running a fresh instance with `sudo systemctl restart nginx` and `sudo systemctl status nginx`
 - Head over back to your app folder and run `npm start`
+- ---------------------------------------------------- 
+### Creating multiple VMs
+Use `config.vm.define` to create one VM. Inside you should have a `box`, `network`, `hostname` and `provision`. You can add `provider` to rename the VM on VirtualBox. Do this as many times as you'd like and make sure each VM has unique values for hostname and ip adress.
